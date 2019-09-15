@@ -1,21 +1,24 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {Link} from "react-router-dom";
-import BookShelf from "./BookShelf";
+import BookShelves from "./BookShelves";
 
-function ListBooks(props) {
-  return (
-    <div className="list-books">
-      <div className="list-books-title">
-        <h1>MyReads</h1>
+class ListBooks extends Component {
+  render() {
+    const { bookshelves, books } = this.props;
+    return (
+      <div className="list-books">
+        <div className="list-books-title">
+          <h1>MyReads</h1>
+        </div>
+        <BookShelves bookshelves={bookshelves} books={books}/>
+        <div className="open-search">
+          <Link to="search">
+            <button>Add a Book</button>
+          </Link>
+        </div>
       </div>
-      <BookShelf/>
-      <div className="open-search">
-        <Link to="search">
-          <button>Add a Book</button>
-        </Link>
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default ListBooks
