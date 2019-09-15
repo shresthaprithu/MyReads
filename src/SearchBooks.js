@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchBooksInput from './SearchBooksInput'
+import SearchResults from './SearchResults'
 
 function SearchBooks(props) {
   return (
@@ -8,9 +9,7 @@ function SearchBooks(props) {
         <button className="close-search" onClick={() => this.setState({showSearchPage: false})}>Close</button>
         <SearchBooksInput/>
       </div>
-      <div className="search-books-results">
-        <ol className="books-grid"></ol>
-      </div>
+      <SearchResults/>
     </div>
   )
 }
