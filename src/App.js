@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+//import { Route, Link } from 'react-router-dom';
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
-import SearchPage from "./SearchPage";
-import BookShelf from "./BookShelf";
+import SearchBooks from "./SearchBooks";
+import ListBooks from "./ListBooks";
 
 class BooksApp extends React.Component {
   state = {
@@ -19,17 +20,9 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <SearchPage/>
+          <SearchBooks/>
         ) : (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <BookShelf/>
-            <div className="open-search">
-              <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
-            </div>
-          </div>
+          <ListBooks/>
         )}
       </div>
     )

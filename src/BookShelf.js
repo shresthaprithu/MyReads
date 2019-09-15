@@ -1,5 +1,5 @@
 import React from 'react'
-import ListBook from "./ListBook";
+import Book from "./Book";
 
 function BookShelf(props) {
   return (
@@ -9,7 +9,7 @@ function BookShelf(props) {
           <h2 className="bookshelf-title">Currently Reading</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
-              <ListBook/>
+              <Book/>
             </ol>
           </div>
         </div>
