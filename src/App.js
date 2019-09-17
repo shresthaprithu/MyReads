@@ -23,10 +23,24 @@ class BooksApp extends React.Component {
           books
         }))
       })
-    console.log(BooksAPI.getAll())
+    // console.log(BooksAPI.getAll())
   }
   
-  render() {
+  changeShelf = (book, shelf) => {
+    const updateShelf = this.state.books.map(b => {
+      if (b.id === book.id) {
+        b.shelf = shelf;
+      }
+      return b;
+    });
+    
+    this.setState({
+      books: updateShelf,
+    });
+  };
+
+
+render() {
     const { books } = this.state;
     return (
       <div className="app">
@@ -34,10 +48,17 @@ class BooksApp extends React.Component {
           exact
           path="/"
           render={() => (
-            <ListBooks bookshelves={this.bookshelves} books={books} />
+            <ListBooks
+              bookshelves={this.bookshelves}
+              books={books}
+              changeShelf={this.changeShelf}
+            />
           )} />
         <Route path="/search" render={() => (
-          <SearchBooks books={books} />
+          <SearchBooks
+            books={books}
+            changeShelf={this.changeShelf}
+          />
         )} />
       </div>
     )

@@ -4,13 +4,13 @@ import BookShelves from "./BookShelves";
 
 class ListBooks extends Component {
   render() {
-    const { bookshelves, books } = this.props;
+    const { bookshelves, books, changeShelf } = this.props;
     return (
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
-        <BookShelves bookshelves={bookshelves} books={books}/>
+        <BookShelves bookshelves={bookshelves} books={books} changeShelf={changeShelf}/>
         <div className="open-search">
           <Link to="search">
             <button>Add a Book</button>
