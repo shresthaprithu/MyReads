@@ -2,12 +2,16 @@ import React from 'react'
 import Book from "./Book";
 
 const SearchResults = props => {
-  const { books } = props;
+  const { books, searchBooks, changeShelf } = props;
   return (
     <div className="search-books-results">
       <ol className="books-grid">
-        {books.map(book => (
-          <Book key={book.id} book={book} shelf="none" />
+        {searchBooks.map(book => (
+          <Book
+            key={book.id}
+            book={book}
+            changeShelf ={changeShelf}
+            shelf={book.shelf ? book.shelf : 'none'} />
         ))}
       </ol>
     </div>
