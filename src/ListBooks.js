@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from "react-router-dom";
+import PropTypes from 'prop-types'
 import BookShelves from "./BookShelves";
 
 class ListBooks extends Component {
@@ -19,6 +20,12 @@ class ListBooks extends Component {
       </div>
     )
   }
+}
+
+ListBooks.propTypes = {
+  bookshelves: PropTypes.array,
+  books: PropTypes.array,
+  changeShelf: PropTypes.func,
 }
 
 export default ListBooks

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import SearchBooksInput from './SearchBooksInput'
 import SearchResults from './SearchResults'
+import PropTypes from "prop-types";
 
 class SearchBooks extends Component{
   render() {
@@ -23,5 +24,14 @@ class SearchBooks extends Component{
     )
   }
 }
+
+SearchBooks.propTypes = {
+  books: PropTypes.array,
+  searchBooks: PropTypes.array,
+  onSearch: PropTypes.func,
+  onReset: PropTypes.func,
+  changeShelf: PropTypes.func,
+}
+
 
 export default SearchBooks
