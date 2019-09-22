@@ -42,13 +42,26 @@ class BooksApp extends React.Component {
     /*BooksAPI.update(book, shelf).then(books => (
       console.log(books)
     ))*/
+    
+    // reflect added books to new shelf from search
+    let newBooks = [];
+    newBooks = this.state.books.filter(b => b.id !== book.id);
+  
+    if (shelf !== 'none') {
+      book.shelf = shelf;
+      newBooks = newBooks.concat(book);
+    }
+  
+    this.setState({
+      books: newBooks,
+    });
   };
   
   searchBooksResult = query => {
     if (query.length > 0) {
       BooksAPI.search(query).then(books => {
         if (books.error) {
-          console.log(books.error)
+          // console.log(books.error)
           this.setState({
             searchBooks: []
           })
