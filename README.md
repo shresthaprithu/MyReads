@@ -90,3 +90,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## App Installation procedure
+The application was created with create-react-app and requires only npm install and npm start to get it installed and launched.
+
+Besides default packages from create-react-app, there are additional packages installed,
+1. react-router-dom
+2. prop-types
