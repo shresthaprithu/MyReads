@@ -6,7 +6,13 @@ import PropTypes from "prop-types";
 
 class SearchBooks extends Component{
   render() {
-    const { books, onSearch, onReset, changeShelf, searchBooks } = this.props;
+    const {
+      books,
+      onSearch,
+      onReset,
+      changeShelf,
+      searchBooks,
+      hasError } = this.props;
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -20,7 +26,13 @@ class SearchBooks extends Component{
           books={books}
           searchBooks={searchBooks}
           changeShelf={changeShelf}
+          hasError={hasError}
         />
+        {
+          hasError
+              ? <div style={{textAlign: 'center'}}>Nothing to display. Please try again.</div>
+              : null
+        }
       </div>
     )
   }
@@ -32,6 +44,7 @@ SearchBooks.propTypes = {
   onSearch: PropTypes.func,
   onReset: PropTypes.func,
   changeShelf: PropTypes.func,
+  hasError: PropTypes.bool
 };
 
 export default SearchBooks

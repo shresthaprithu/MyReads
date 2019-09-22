@@ -8,7 +8,8 @@ import ListBooks from "./ListBooks";
 class BooksApp extends React.Component {
   state = {
     books:[],
-    searchBooks: []
+    searchBooks: [],
+    error: false,
   };
   
   bookshelves = [
@@ -27,11 +28,8 @@ class BooksApp extends React.Component {
   };
   
   changeShelf = (book, shelf) => {
-    const updateShelf = this.state.books.map(b => {
-      if (b.id === book.id) {
-        b.shelf = shelf;
-      }
-      return b;
+    const updateShelf = this.state.books.filter(b => {
+      return b.id === book.id;
     });
     
     this.setState({
@@ -58,11 +56,13 @@ class BooksApp extends React.Component {
       BooksAPI.search(query).then(books => {
         if (books.error) {
           this.setState({
-            searchBooks: []
+            searchBooks: [],
+            error: true,
           })
         } else {
           this.setState({
-            searchBooks: books
+            searchBooks: books,
+            error: false,
           })
         }
       })
@@ -80,7 +80,7 @@ class BooksApp extends React.Component {
   };
   
   render() {
-    const { books, searchBooks } = this.state;
+    const { books, searchBooks, error } = this.state;
     return (
       <div className="app">
         <Route
@@ -100,6 +100,7 @@ class BooksApp extends React.Component {
             changeShelf={this.changeShelf}
             onSearch={this.searchBooksResult}
             onReset={this.searchReset}
+            hasError={error}
           />
         )} />
       </div>
