@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import * as BooksAPI from './BooksAPI'
-import './App.css'
+import * as BooksAPI from './BooksAPI';
+import './App.css';
 import SearchBooks from "./SearchBooks";
 import ListBooks from "./ListBooks";
 
@@ -9,7 +9,7 @@ class BooksApp extends React.Component {
   state = {
     books:[],
     searchBooks: []
-  }
+  };
   
   bookshelves = [
     { key: 'currentlyReading', name: 'Currently Reading' },
@@ -24,8 +24,7 @@ class BooksApp extends React.Component {
           books
         }))
       })
-    // console.log(BooksAPI.getAll())
-  }
+  };
   
   changeShelf = (book, shelf) => {
     const updateShelf = this.state.books.map(b => {
@@ -39,9 +38,6 @@ class BooksApp extends React.Component {
       books: updateShelf,
     });
     BooksAPI.update(book, shelf);
-    /*BooksAPI.update(book, shelf).then(books => (
-      console.log(books)
-    ))*/
     
     // reflect added books to new shelf from search
     let newBooks = [];
@@ -61,7 +57,6 @@ class BooksApp extends React.Component {
     if (query.length > 0) {
       BooksAPI.search(query).then(books => {
         if (books.error) {
-          // console.log(books.error)
           this.setState({
             searchBooks: []
           })
@@ -76,14 +71,13 @@ class BooksApp extends React.Component {
         searchBooks: []
       })
     }
-  }
+  };
   
   searchReset = query => {
       this.setState({
         searchBooks: []
       })
-  }
-  
+  };
   
   render() {
     const { books, searchBooks } = this.state;

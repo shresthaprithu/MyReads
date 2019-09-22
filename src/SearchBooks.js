@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import SearchBooksInput from './SearchBooksInput'
-import SearchResults from './SearchResults'
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import SearchBooksInput from './SearchBooksInput';
+import SearchResults from './SearchResults';
 import PropTypes from "prop-types";
 
 class SearchBooks extends Component{
@@ -11,7 +11,8 @@ class SearchBooks extends Component{
       <div className="search-books">
         <div className="search-books-bar">
           <Link to="/">
-            <button onClick={onReset} className={'close-search'}>Add a Book</button>
+            <button onClick={onReset}
+                    className={'close-search'}>Add a Book</button>
           </Link>
           <SearchBooksInput onSearch={onSearch} onReset={onReset}/>
         </div>
@@ -31,7 +32,6 @@ SearchBooks.propTypes = {
   onSearch: PropTypes.func,
   onReset: PropTypes.func,
   changeShelf: PropTypes.func,
-}
-
+};
 
 export default SearchBooks

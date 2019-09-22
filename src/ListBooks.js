@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import BookShelves from "./BookShelves";
 
 class ListBooks extends Component {
@@ -11,7 +11,10 @@ class ListBooks extends Component {
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
-        <BookShelves bookshelves={bookshelves} books={books} changeShelf={changeShelf}/>
+        <BookShelves bookshelves={bookshelves}
+                     books={books}
+                     changeShelf={changeShelf}
+        />
         <div className="open-search">
           <Link to="search">
             <button>Add a Book</button>

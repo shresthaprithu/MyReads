@@ -1,12 +1,10 @@
-import React from 'react'
+import React from 'react';
 import Book from "./Book";
 import PropTypes from "prop-types";
 
 const BookShelf = props => {
   const { shelf, books, changeShelf } = props;
-  console.log('shelf', shelf)
   const booksOnThisShelf = books.filter(book => book.shelf === shelf.key);
-  // console.log(props.shelf.name)
   return (
     <div className="list-books-content">
       <div>
@@ -15,7 +13,10 @@ const BookShelf = props => {
           <div className="bookshelf-books">
             <ol className="books-grid">
               {booksOnThisShelf.map(book => (
-                <Book key={book.id} book={book} shelf={shelf.key} changeShelf={changeShelf} />
+                <Book key={book.id}
+                      book={book}
+                      shelf={shelf.key}
+                      changeShelf={changeShelf} />
               ))}
             </ol>
           </div>
@@ -23,12 +24,12 @@ const BookShelf = props => {
       </div>
     </div>
   )
-}
+};
 
 BookShelf.propTypes = {
   shelf: PropTypes.object,
   book: PropTypes.object,
   changeShelf: PropTypes.func,
-}
+};
 
 export default BookShelf

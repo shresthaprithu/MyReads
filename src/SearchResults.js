@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Book from "./Book";
 import PropTypes from "prop-types";
 
@@ -10,9 +10,9 @@ const SearchResults = props => {
         book.shelf = b.shelf;
       }
       return b
-    })
+    });
     return book;
-  })
+  });
   return (
     <div className="search-books-results">
       <ol className="books-grid">
@@ -26,12 +26,12 @@ const SearchResults = props => {
       </ol>
     </div>
   )
-}
+};
 
 SearchResults.propTypes = {
   books: PropTypes.array,
   searchBooks: PropTypes.array,
   changeShelf: PropTypes.func,
-}
+};
 
 export default SearchResults
