@@ -12,7 +12,7 @@ const BookShelf = props => {
     <div className="list-books-content">
       <div>
         <div className="bookshelf">
-          <h2 className="bookshelf-title">{props.shelf.name}</h2>
+          <h2 className="bookshelf-title">{props.shelf.name} ({booksOnThisShelf.length})</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
               {booksOnThisShelf.map(book => (
@@ -21,6 +21,11 @@ const BookShelf = props => {
                       shelf={shelf.key}
                       changeShelf={changeShelf} />
               ))}
+              {
+                booksOnThisShelf.length === 0
+                  ? <div style={{textAlign: 'center'}}>The shelf is empty. Please add books to your list.</div>
+                    : null
+              }
             </ol>
           </div>
         </div>
