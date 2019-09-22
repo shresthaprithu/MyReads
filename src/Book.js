@@ -3,7 +3,10 @@ import BookShelfChanger from "./BookShelfChanger";
 import PropTypes from "prop-types";
 
 const Book = props => {
-  const { book, shelf, changeShelf } = props;
+  const {
+    book,
+    shelf,
+    changeShelf } = props;
   return (
     <li>
       <div className="book">

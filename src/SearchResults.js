@@ -3,7 +3,10 @@ import Book from "./Book";
 import PropTypes from "prop-types";
 
 const SearchResults = props => {
-  const {searchBooks, books, changeShelf } = props;
+  const {
+    searchBooks,
+    books,
+    changeShelf } = props;
   const booksAlreadyOnShelf = searchBooks.map(book => {
     books.map(b => {
       if(b.id === book.id) {
@@ -32,6 +35,6 @@ SearchResults.propTypes = {
   books: PropTypes.array,
   searchBooks: PropTypes.array,
   changeShelf: PropTypes.func,
-};
+}
 
 export default SearchResults

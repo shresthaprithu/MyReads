@@ -5,7 +5,10 @@ import BookShelves from "./BookShelves";
 
 class ListBooks extends Component {
   render() {
-    const { bookshelves, books, changeShelf } = this.props;
+    const {
+      bookshelves,
+      books,
+      changeShelf } = this.props;
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -29,6 +32,6 @@ ListBooks.propTypes = {
   bookshelves: PropTypes.array,
   books: PropTypes.array,
   changeShelf: PropTypes.func,
-}
+};
 
 export default ListBooks

@@ -3,7 +3,10 @@ import Book from "./Book";
 import PropTypes from "prop-types";
 
 const BookShelf = props => {
-  const { shelf, books, changeShelf } = props;
+  const {
+    shelf,
+    books,
+    changeShelf } = props;
   const booksOnThisShelf = books.filter(book => book.shelf === shelf.key);
   return (
     <div className="list-books-content">
