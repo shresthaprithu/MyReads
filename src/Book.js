@@ -7,6 +7,7 @@ const Book = props => {
     book,
     shelf,
     changeShelf } = props;
+  
   return (
     <li>
       <div className="book">

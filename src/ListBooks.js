@@ -9,6 +9,7 @@ class ListBooks extends Component {
       bookshelves,
       books,
       changeShelf } = this.props;
+    
     return (
       <div className="list-books">
         <div className="list-books-title">

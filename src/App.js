@@ -35,6 +35,7 @@ class BooksApp extends React.Component {
     this.setState({
       books: updateShelf,
     });
+    
     BooksAPI.update(book, shelf);
     
     // reflect added books to new shelf from search

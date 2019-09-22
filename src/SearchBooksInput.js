@@ -4,12 +4,14 @@ class SearchBooksInput extends Component {
   state = {
     query: ''
   };
+  
   onQueryUpdate = event => {
     const value = event.target.value;
     this.setState({ query: value }, () => {
       this.props.onSearch(value);
     });
   };
+  
   render() {
     return (
       <div className="search-books-input-wrapper">

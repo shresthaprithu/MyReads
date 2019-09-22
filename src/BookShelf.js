@@ -8,6 +8,7 @@ const BookShelf = props => {
     books,
     changeShelf } = props;
   const booksOnThisShelf = books.filter(book => book.shelf === shelf.key);
+  
   return (
     <div className="list-books-content">
       <div>
