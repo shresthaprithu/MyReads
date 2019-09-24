@@ -3,16 +3,57 @@ import {Link} from 'react-router-dom';
 import SearchBooksInput from './SearchBooksInput';
 import SearchResults from './SearchResults';
 import PropTypes from "prop-types";
+import * as BooksAPI from "./BooksAPI";
 
 class SearchBooks extends Component{
+  
+  state = {
+    query: '',
+    searchBooks:[],
+    error: false
+  };
+  
+  onQueryUpdate = event => {
+    const value = event.target.value;
+    this.setState({ query: value }, () => {
+      this.searchBooksResult(value);
+    });
+  };
+  
+  searchBooksResult = query => {
+    if (query.length > 0) {
+      BooksAPI.search(query).then(books => {
+        if (books.error) {
+          this.setState({
+            searchBooks: [],
+            error: true,
+          })
+        } else if(query === this.state.query) {
+          this.setState({
+            searchBooks: books,
+            error: false,
+          })
+        }
+      })
+    } else {
+      this.setState({
+        searchBooks: []
+      })
+    }
+  };
+  
+  searchReset = () => {
+    this.setState({
+      searchBooks: []
+    })
+  };
+  
   render() {
     const {
-      books,
-      onSearch,
       onReset,
       changeShelf,
-      searchBooks,
-      hasError } = this.props;
+    } = this.props;
+    
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -20,18 +61,17 @@ class SearchBooks extends Component{
             <button onClick={onReset}
                     className={'close-search'}>Add a Book</button>
           </Link>
-          <SearchBooksInput onSearch={onSearch} onReset={onReset}/>
+          <SearchBooksInput  onReset={onReset} onQueryUpdate={this.onQueryUpdate}/>
         </div>
         <SearchResults
-          books={books}
-          searchBooks={searchBooks}
+          books={this.props.books}
+          searchBooks={this.state.searchBooks}
           changeShelf={changeShelf}
-          hasError={hasError}
         />
         {
-          hasError
-              ? <div style={{textAlign: 'center'}}>Nothing to display. Please try again.</div>
-              : null
+          this.state.error
+            ? <div style={{textAlign: 'center'}}>Nothing to display. Please try again.</div>
+            : null
         }
       </div>
     )
@@ -39,12 +79,8 @@ class SearchBooks extends Component{
 }
 
 SearchBooks.propTypes = {
-  books: PropTypes.array,
-  searchBooks: PropTypes.array,
-  onSearch: PropTypes.func,
   onReset: PropTypes.func,
-  changeShelf: PropTypes.func,
-  hasError: PropTypes.bool
+  changeShelf: PropTypes.func
 };
 
 export default SearchBooks
