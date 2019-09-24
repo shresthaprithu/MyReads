@@ -4,9 +4,10 @@ import PropTypes from "prop-types";
 
 const SearchResults = props => {
   const {
-    searchBooks,
     books,
+    searchBooks,
     changeShelf } = props;
+  
   const booksAlreadyOnShelf = searchBooks.map(book => {
     books.map(b => {
       if(b.id === book.id) {
@@ -16,6 +17,7 @@ const SearchResults = props => {
     });
     return book;
   });
+  
   return (
     <div className="search-books-results">
       <ol className="books-grid">
@@ -35,6 +37,6 @@ SearchResults.propTypes = {
   books: PropTypes.array,
   searchBooks: PropTypes.array,
   changeShelf: PropTypes.func,
-}
+};
 
 export default SearchResults

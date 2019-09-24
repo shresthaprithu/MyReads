@@ -7,6 +7,7 @@ const BookShelves = props => {
     bookshelves,
     books,
     changeShelf } = props;
+  
   return (
     <div className="list-books-content">
       <div>
@@ -23,7 +24,6 @@ const BookShelves = props => {
 };
 
 BookShelves.propTypes = {
-  key: PropTypes.string,
   bookshelves: PropTypes.array,
   books: PropTypes.array,
   changeShelf: PropTypes.func,
